@@ -1,127 +1,182 @@
-// ===== Page Animation =====
-window.addEventListener("load", () => {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-    document.body.style.opacity = "0";
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-    setTimeout(() => {
-        document.body.style.transition = "1.2s";
-        document.body.style.opacity = "1";
-    }, 100);
+body{
 
-    createConfetti();
+height:100vh;
 
-});
+display:flex;
 
-// ===== Confetti =====
+justify-content:center;
 
-function createConfetti(){
+align-items:center;
 
-    for(let i=0;i<120;i++){
+background:linear-gradient(-45deg,#ff512f,#dd2476,#6a11cb,#2575fc);
 
-        const c = document.createElement("div");
+background-size:400% 400%;
 
-        c.className = "confetti";
-
-        c.style.left = Math.random()*100+"vw";
-
-        c.style.animationDuration = (Math.random()*3+2)+"s";
-
-        c.style.animationDelay = Math.random()*2+"s";
-
-        c.style.background =
-        randomColor();
-
-        c.style.transform =
-        `rotate(${Math.random()*360}deg)`;
-
-        document.body.appendChild(c);
-
-        setTimeout(()=>{
-            c.remove();
-        },7000);
-
-    }
+animation:bg 12s infinite;
 
 }
 
-function randomColor(){
+@keyframes bg{
 
-    const colors=[
+0%{background-position:0% 50%;}
 
-        "#ff9900",
+50%{background-position:100% 50%;}
 
-        "#00d4ff",
-
-        "#00ff99",
-
-        "#ff4ecd",
-
-        "#ffd700",
-
-        "#ffffff"
-
-    ];
-
-    return colors[
-        Math.floor(Math.random()*colors.length)
-    ];
+100%{background-position:0% 50%;}
 
 }
 
-// ===== Floating Effect =====
+.container{
 
-const card=document.querySelector(".card");
+width:850px;
 
-if(card){
+padding:50px;
 
-setInterval(()=>{
+text-align:center;
 
-card.animate([
+background:rgba(255,255,255,.15);
 
-{
+backdrop-filter:blur(15px);
 
-transform:"translateY(0px)"
+border-radius:25px;
 
-},
+box-shadow:0 0 40px rgba(0,0,0,.4);
 
-{
-
-transform:"translateY(-10px)"
-
-},
-
-{
-
-transform:"translateY(0px)"
+color:white;
 
 }
 
-],{
+.icon{
 
-duration:2500,
+font-size:90px;
 
-iterations:1
-
-});
-
-},2500);
+animation:float 2s infinite alternate;
 
 }
 
-// ===== Button Hover Glow =====
+@keyframes float{
 
-document.querySelectorAll("a").forEach(btn=>{
+from{
 
-btn.addEventListener("mouseenter",()=>{
+transform:translateY(0);
 
-btn.style.boxShadow="0 0 35px white";
+}
 
-});
+to{
 
-btn.addEventListener("mouseleave",()=>{
+transform:translateY(-15px);
 
-btn.style.boxShadow="";
+}
 
-});
+}
 
-});
+h1{
+
+margin:20px 0;
+
+font-size:55px;
+
+color:#FFD700;
+
+}
+
+p{
+
+font-size:20px;
+
+line-height:35px;
+
+margin-bottom:30px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.12);
+
+padding:25px;
+
+border-radius:18px;
+
+margin-bottom:35px;
+
+}
+
+.card h2{
+
+margin-bottom:20px;
+
+color:#00ffff;
+
+}
+
+.info{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:15px;
+
+font-size:18px;
+
+}
+
+.buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:25px;
+
+}
+
+.buttons a{
+
+text-decoration:none;
+
+padding:18px 40px;
+
+border-radius:50px;
+
+font-size:20px;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.buttons a:first-child{
+
+background:#ff9900;
+
+color:white;
+
+}
+
+.buttons a:last-child{
+
+background:#00bfff;
+
+color:white;
+
+}
+
+.buttons a:hover{
+
+transform:scale(1.08);
+
+box-shadow:0 0 20px white;
+
+}
